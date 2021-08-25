@@ -1,0 +1,26 @@
+{
+  "name": "No Recruit",
+  "description": "Removes job postings from user specified recruiters.",
+  "version": "1.0",
+  "manifest_version": 3, 
+  "content_scripts": [
+    {
+      "matches": ["https://*.indeed.com/*"],
+      "run_at": "document_end",
+      "js": ["src/js/content-script-indeed.js"]
+    }
+  ],
+  "action": {
+    "default_title": "Filter Settings",
+    "default_icon": "src/resources/icon16.png",
+    "default_popup": "src/html/popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "web_accessible_resources": [{
+    "resources": ["src/resources/recommended-filters.txt"],
+    "matches": ["https://*.indeed.com/*"]
+  }]
+}
